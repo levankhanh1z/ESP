@@ -1,0 +1,33 @@
+local espNames = {"Part1", "Part2", "Part3"} -- Thêm tên Part vào danh sách
+
+function addESP(part, text, color)
+    -- (Code của hàm addESP không thay đổi)
+end
+
+_G.espEnabled = true
+while _G.espEnabled do
+    for _, partName in ipairs(espNames) do
+        local part = game.Workspace:FindFirstChild(partName)
+        if part and part:IsA("Part") then
+            if part:FindFirstChild("Esp") == nil then
+                addESP(part, partName, Color3.new(255, 0, 0)) -- Màu sắc có thể được điều chỉnh theo mong muốn
+            else
+                local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - part.Position).magnitude
+                part.Esp.TextLabel.Text = partName .. " (" .. math.floor(distance) .. ")   "
+            end
+        end
+    end
+    wait()
+end
+
+if _G.espEnabled == false then
+    local parts = game.Workspace:WaitForChild("Mine"):GetDescendants()
+    for i, v in pairs(parts) do
+        if v:IsA("Part") then
+            local esp = v:FindFirstChild("Esp")
+            if esp then
+                esp:Destroy()
+            end
+        end
+    end
+end
