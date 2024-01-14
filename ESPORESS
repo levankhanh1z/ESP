@@ -1,6 +1,8 @@
 -- Các biến cấu hình
 local espParts = {"Stone"}  -- Danh sách tên các phần tử muốn hiển thị ESP
-ocal espTransparency = 0.5  -- Độ trong suốt của hộp ESP
+-- Các biến cấu hình
+  -- Danh sách tên các phần tử muốn hiển thị ESP
+local espTransparency = 0.5  -- Độ trong suốt của hộp ESP
 
 -- Các biến cho thông tin khoảng cách
 local player = game.Players.LocalPlayer
@@ -58,5 +60,4 @@ game.Workspace.Mine.DescendantRemoving:Connect(function(descendant)
         end
     end
 end)
-    end
-end)
+
