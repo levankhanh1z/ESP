@@ -1,6 +1,5 @@
 -- Các biến cấu hình
 local espParts = {"Stone"}  -- Danh sách tên các phần tử muốn hiển thị ESP
- -- Danh sách tên các phần tử muốn hiển thị ESP
 local espTransparency = 0.5  -- Độ trong suốt của hộp ESP
 
 -- Các biến cho thông tin khoảng cách
@@ -51,9 +50,6 @@ function partAdded(part)
             local distance = (partPosition - playerPosition).magnitude
             CreateESP(part, distance)
         end
-    else
-        partEspTrigger:Disconnect()
-        partEspTrigger = nil
     end
 end
 
@@ -64,3 +60,13 @@ game.Workspace.Mine.DescendantAdded:Connect(function(descendant)
     end
 end)
 
+-- Lắng nghe sự kiện khi phần tử trong game.Workspace.Mine thay đổi
+game.Workspace.Mine.DescendantRemoving:Connect(function(descendant)
+    if descendant:IsA("BasePart") then
+        -- Xóa ESP khi phần tử bị loại bỏ
+        local espAdornment = descendant:FindFirstChild(descendant.Name:lower().."_PESP")
+        if espAdornment then
+            espAdornment:Destroy()
+        end
+    end
+end)
