@@ -1,7 +1,24 @@
 local espNames = {"Stone"} -- Thêm tên Block vào danh sách
 
+
 function addESP(part, text, color)
-    -- (Code của hàm addESP không thay đổi)
+    local gui = Instance.new("BillboardGui", part)
+    local esp = Instance.new("TextLabel", gui)
+
+    gui.Name = "Esp"
+    gui.ResetOnSpawn = false
+    gui.AlwaysOnTop = true
+    gui.LightInfluence = 0
+    gui.Size = UDim2.new(1.75, 0, 1.75, 0)
+
+    esp.Text = text
+    esp.Size = UDim2.new(0, 6, 0, 6)  -- Kích thước đã được sửa thành 6, 6
+    esp.BorderSizePixel = 4
+    esp.BorderColor3 = Color3.new(0, 255, 255)
+    esp.BorderSizePixel = 0
+    esp.Font = "GothamSemibold"
+    esp.TextSize = 8
+    esp.TextColor3 = color
 end
 
 _G.espEnabled = true
