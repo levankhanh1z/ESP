@@ -1,4 +1,4 @@
-local espNames = {"Part1", "Part2", "Part3"} -- Thêm tên Part vào danh sách
+local espNames = {"Stone"} -- Thêm tên Part vào danh sách
 
 function addESP(part, text, color)
     -- (Code của hàm addESP không thay đổi)
