@@ -1,5 +1,6 @@
 -- Các biến cấu hình
 local espParts = {"Stone"}  -- Danh sách tên các phần tử muốn hiển thị ESP
+ -- Danh sách tên các phần tử muốn hiển thị ESP
 local espTransparency = 0.5  -- Độ trong suốt của hộp ESP
 
 -- Các biến cho thông tin khoảng cách
@@ -56,9 +57,10 @@ function partAdded(part)
     end
 end
 
--- Lắng nghe sự kiện thêm phần tử mới
-game.Workspace.DescendantAdded:Connect(function(descendant)
+-- Lắng nghe sự kiện thêm phần tử mới trong game.Workspace.Mine
+game.Workspace.Mine.DescendantAdded:Connect(function(descendant)
     if descendant:IsA("BasePart") then
         partAdded(descendant)
     end
 end)
+
