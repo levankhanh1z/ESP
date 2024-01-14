@@ -1,11 +1,9 @@
 -- Các biến cấu hình
 local espParts = {"Stone"}  -- Danh sách tên các phần tử muốn hiển thị ESP
-local espTransparency = 0.5  -- Độ trong suốt của hộp ESP
+ocal espTransparency = 0.5  -- Độ trong suốt của hộp ESP
 
 -- Các biến cho thông tin khoảng cách
 local player = game.Players.LocalPlayer
-local camera = game.Workspace.CurrentCamera
-local espDistance = 0
 
 -- Hàm kiểm tra xem một giá trị có tồn tại trong bảng hay không
 function FindInTable(tbl, value)
@@ -28,16 +26,6 @@ function CreateESP(part, distance)
     espAdornment.Size = part.Size
     espAdornment.Transparency = espTransparency
     espAdornment.Color = BrickColor.new("Lime green").Color
-
-    -- Tạo đối tượng TextLabel để hiển thị tên và khoảng cách
-    local label = Instance.new("TextLabel")
-    label.Parent = espAdornment
-    label.Size = UDim2.new(1, 0, 1, 0)
-    label.BackgroundTransparency = 1
-    label.TextStrokeTransparency = 0.5
-    label.TextColor3 = Color3.new(1, 1, 1)
-    label.TextStrokeColor3 = Color3.new(0, 0, 0)
-    label.Text = part.Name .. "\n" .. tostring(distance) .. "m"
 end
 
 -- Hàm được gọi khi một phần tử mới được thêm vào
@@ -68,5 +56,7 @@ game.Workspace.Mine.DescendantRemoving:Connect(function(descendant)
         if espAdornment then
             espAdornment:Destroy()
         end
+    end
+end)
     end
 end)
