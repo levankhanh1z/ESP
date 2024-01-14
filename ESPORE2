@@ -1,4 +1,4 @@
-local espNames = {"Stone"} -- Thêm tên Part vào danh sách
+local espNames = {"Stone"} -- Thêm tên Block vào danh sách
 
 function addESP(part, text, color)
     -- (Code của hàm addESP không thay đổi)
@@ -6,14 +6,14 @@ end
 
 _G.espEnabled = true
 while _G.espEnabled do
-    for _, partName in ipairs(espNames) do
-        local part = game.Workspace:FindFirstChild(partName)
+    for _, blockName in ipairs(espNames) do
+        local part = game.Workspace:FindFirstChild(blockName)
         if part and part:IsA("Part") then
             if part:FindFirstChild("Esp") == nil then
-                addESP(part, partName, Color3.new(255, 0, 0)) -- Màu sắc có thể được điều chỉnh theo mong muốn
+                addESP(part, blockName, Color3.new(255, 0, 0)) -- Màu sắc có thể được điều chỉnh theo mong muốn
             else
                 local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - part.Position).magnitude
-                part.Esp.TextLabel.Text = partName .. " (" .. math.floor(distance) .. ")   "
+                part.Esp.TextLabel.Text = blockName .. " (" .. math.floor(distance) .. ")   "
             end
         end
     end
